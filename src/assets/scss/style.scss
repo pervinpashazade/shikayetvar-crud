@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700,900&display=swap&subset=cyrillic");
+
+$primary: #5e72e4;
+$success: #24d0b6;
+$danger: #fb6565;
+$indigo: #32325d;
+$green: #00cdac;
+$twitter: #1da1f2;
+$facebook: #3B5999;
+$dribble: #EA4C89;;
+$github: #222222;
+
+@import "reset";
+@import "utils";
+@import "main";
