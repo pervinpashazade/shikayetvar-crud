@@ -11,7 +11,7 @@ function Profile() {
 
     useEffect(() => {
         console.log('params', params);
-        axios.get(`https://jsonplaceholder.typicode.com/users/${params.id}`)
+        axios.get(`http://localhost:8080/api/user/${params.id}`)
             .then(res => setData(res.data));
     }, [])
 
@@ -23,7 +23,7 @@ function Profile() {
                         <div className="col-md-12 col-lg-6 mb-4">
                             <Label className="font-weight-bold">Profile</Label>
                             <p className="text-muted">
-                                Name: <span className='font-weight-bold ml-1'>{data.name}</span>
+                                Name: <span className='font-weight-bold ml-1'>{data.fullname}</span>
                             </p>
                             <p className="text-muted">
                                 Username: <span className='font-weight-bold ml-1'>{data.username}</span>

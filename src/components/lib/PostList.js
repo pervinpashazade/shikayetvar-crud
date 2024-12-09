@@ -25,7 +25,7 @@ function PostList() {
     }, []);
 
     const getData = () => {
-        axios.get('https://jsonplaceholder.typicode.com/posts')
+        axios.get('http://localhost:8080/api/blog/list')
             .then(res => {
                 if (res.status) {
                     setData(res.data);
@@ -110,6 +110,11 @@ function PostList() {
             hidden: true
         }
     }, {
+        dataField: 'user.fullname',
+        headerAttrs: {
+            hidden: true
+        }
+    }, {
         dataField: 'actions',
         text: '',
         headerAttrs: {
@@ -119,7 +124,7 @@ function PostList() {
             return (
                 <div className='table-buttons'>
                     <Link
-                        to={`/post/${row.id}`}
+                        to={`/post/${row._id}`}
                         className='btn btn-primary ml-3'
                     >
                         DETAY

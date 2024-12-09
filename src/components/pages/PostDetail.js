@@ -9,18 +9,13 @@ function PostDetail() {
     const params = useParams()
 
     const [data, setData] = useState(null);
-    const [userData, setUserData] = useState(null);
 
     useEffect(() => {
-        axios.get(`https://jsonplaceholder.typicode.com/posts/${params.id}`)
+        axios.get(`http://localhost:8080/api/blog/${params.id}`)
             .then(res => {
                 setData(res.data);
                 return res.data.userId;
             })
-            .then((id) => {
-                axios.get('https://jsonplaceholder.typicode.com/users/' + id)
-                    .then(res => setUserData(res.data));
-            });
     }, [])
 
     return (
@@ -33,20 +28,14 @@ function PostDetail() {
                                 <Label className="font-weight-bold">User</Label>
                                 <p className="text-muted">
                                     Name:
-                                    {
-                                        userData ?
-                                            <Link
-                                                to={`/profile/${data.userId}`}
-                                                className='text-success ml-2'
-                                            >
-                                                {
-                                                    userData.name ? userData.name : ''
-                                                }
-                                            </Link>
-                                            :
-                                            ''
-                                    }
-
+                                    <Link
+                                        to={`/profile/${data.user._id}`}
+                                        className='text-success ml-2'
+                                    >
+                                        {
+                                            data.user?.fullname || ''
+                                        }
+                                    </Link>
                                 </p>
                                 <Label className="font-weight-bold">Title</Label>
                                 <p className="text-muted">
@@ -59,7 +48,7 @@ function PostDetail() {
                                 <Label className="font-weight-bold">Body</Label>
                                 <p className="text-muted">
                                     {
-                                        data.body ? data.body : ''
+                                        data.description ? data.description : ''
                                     }
                                 </p>
                             </div>
